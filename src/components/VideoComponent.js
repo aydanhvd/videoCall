@@ -1,6 +1,5 @@
 import { useParticipant } from '@videosdk.live/react-sdk';
 import React, { useEffect, useMemo, useRef } from 'react';
-import Webcam from "react-webcam";
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 
