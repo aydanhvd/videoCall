@@ -1,3 +1,5 @@
+import React from 'react';
+
 
 // Primary Background:#212032
 // Secondary Background(Right Side Panel):#333244

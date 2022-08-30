@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { authToken, createMeeting } from '../networking/API';
 import { JoinScreen } from './JoinScreen';
-import { Container } from './Container';
+import { VideoContainer } from './VideoContainer';
 
 import {
     MeetingProvider,
@@ -27,7 +27,7 @@ export const VideoCall=()=>{
             token={authToken}
         >
             <MeetingConsumer>
-            {() => <Container meetingId = {meetingId}/>}
+            {() => <VideoContainer meetingId = {meetingId}/>}
             </MeetingConsumer>
         </MeetingProvider>
     ) : (

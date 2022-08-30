@@ -5,6 +5,7 @@ export  function JoinScreen({ getMeetingAndToken }) {
     const [meetingId, setMeetingId] = useState(null);
     const onClick = async () => {
     await getMeetingAndToken(meetingId);
+    
     };
         return (
             <div>

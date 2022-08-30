@@ -1,13 +1,28 @@
 import React from 'react';
-import { useMeeting } from '@videosdk.live/react-sdk';
+import styled from 'styled-components';
+import { MicButton } from '../commons/MicButton';
+import { EndCallButton } from '../commons/EndButton';
+import { WebCamButton } from '../commons/VideoCamButton';
+
 
 export const Controls = () => {
-    const {leave, toggleMic, toggleWebcam} = useMeeting()
+
     return (
-        <div>
-            <button onClick={leave}>Leave</button>
-            <button onClick={() => toggleMic() }>Toggle Mic</button>
-            <button onClick={() => toggleWebcam()}>Toggle Webcam</button>
-        </div>
+        <Wrapper>
+            <MicButton/>
+            <EndCallButton/>
+            <WebCamButton/>
+        </Wrapper>
     )
 }
+
+const Wrapper = styled.div`
+    display: flex;
+    background:rgb(0,0,0, 0.5);
+    justify-content: center;
+    column-gap: 50px;
+    padding: 10px;
+    width: 100% ;
+    position: absolute;
+    bottom: 0;
+`

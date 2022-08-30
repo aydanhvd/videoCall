@@ -1,9 +1,17 @@
+import React from 'react';
+import {RemoveScroll} from 'react-remove-scroll/UI';
+import styled from 'styled-components';
 import { VideoCall } from "./components/VideoCall";
 
 export const App = () => {
+
   return (
-    <div>
+    <Wrapper>
       <VideoCall/>
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  overflow: hidden;
+`
