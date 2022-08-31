@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 
 
-export function VideoComponent(props) {
+export function VideoPlayer (props) {
     const micRef = useRef(null);
 
     const {
@@ -22,9 +22,11 @@ export function VideoComponent(props) {
             mediaStream.addTrack(webcamStream.track);
             return mediaStream;
         }
+        console.log("videoStream")
     }, [webcamStream, webcamOn]);
     
     useEffect(() => {
+        console.log("mediaStream")
         if (micRef.current) {
             if (micOn) {
                 const mediaStream = new MediaStream();
@@ -59,6 +61,7 @@ export function VideoComponent(props) {
                         top: 0,
                         right: 0,
                         bottom: 0,
+                        backgroundColor: "black"
                     }}
 
                     url={videoStream}
@@ -71,6 +74,5 @@ export function VideoComponent(props) {
 }
 
 const PlayerWrapper = styled.div`
-    /* position: relative;
-    padding-top: 56.25% */
+    background-color: black ;
 `

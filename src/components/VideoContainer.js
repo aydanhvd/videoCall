@@ -1,31 +1,32 @@
-import React, {useState} from 'react';
+import React, { useEffect } from 'react';
 import { useMeeting } from '@videosdk.live/react-sdk';
 import { Controls } from './Controls';
-import { VideoComponent } from './VideoComponent';
-import styled from 'styled-components';
-import { Container, Grid, Row, Text } from "@nextui-org/react";
+import { VideoPlayer } from './VideoPlayer';
+import { Grid} from "@nextui-org/react";
+import { BounceLoader } from 'react-spinners';
+import { Palette } from '../palette/theme';
 
 export const VideoContainer=(props)=>{
-    const [joined, setJoined] = useState(false);
+    const [joined, setJoined] = useEffect(false)
     const {join} = useMeeting()
-
     const { participants } = useMeeting();
-    const joinMeeting = () => {
-        setJoined(true);
+    
+    useEffect(() => {
+        console.log("VideoContainer")
         join()
-    }
+        setJoined(true)
+    })
 
-    return (
-        <div >
-        {joined ? (
+    return  joined ? (
+        <div style={{ "background-color": "black"}}>
             <div>
-                <Grid.Container justify="center">
-                {
+                <Grid.Container justify="center" >
+                { 
                     [...participants.keys()].map((participantId) => {
                         console.log(props.meetingId)
                         return ( 
                             <Grid>
-                                <VideoComponent participantId={participantId} key = {participantId} />
+                                <VideoPlayer participantId={participantId} key = {participantId} />
                             </Grid>
                         )
                     }
@@ -33,9 +34,12 @@ export const VideoContainer=(props)=>{
                 </Grid.Container>
                 <Controls/>
             </div>
-        ) : (
-            <button onClick={ ()=>joinMeeting() }>Join</button>
-        )}
         </div>
-    );
+    ) :  (
+        <BounceLoader
+            loading = {true}
+            color = { Palette.ibaBlue }
+            size = {"5vh"}
+        />
+    )
 }

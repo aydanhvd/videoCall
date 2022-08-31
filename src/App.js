@@ -1,16 +1,24 @@
-import React from 'react';
+import React from 'react'; 
+import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import { VideoCall } from "./components/VideoCall";
+import { VideoCallPage } from "./components/VideoCallPage";
 
 export const App = () => {
 
   return (
     <Wrapper>
-      <VideoCall/>
+      <Routes>
+        <Route path="/" element = {<VideoCallPage/>} />
+      </Routes>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  overflow: hidden;
+  box-sizing: border-box;
+  height: 100vh; 
+  display: flex ;
+  justify-content: center;
+  align-items: center;
+  
 `

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMeeting, useParticipant } from '@videosdk.live/react-sdk';
+import { useMeeting } from '@videosdk.live/react-sdk';
 import { CallEnd } from "@material-ui/icons";
 import { Fab } from '@material-ui/core';
 

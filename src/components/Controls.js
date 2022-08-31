@@ -18,11 +18,12 @@ export const Controls = () => {
 
 const Wrapper = styled.div`
     display: flex;
-    background:rgb(0,0,0, 0.5);
+    background:rgb(225,255,225, 0.3);
     justify-content: center;
-    column-gap: 50px;
-    padding: 10px;
+    height: 9% ;
     width: 100% ;
     position: absolute;
     bottom: 0;
+    box-sizing: border-box;
+    align-content: center;
 `
