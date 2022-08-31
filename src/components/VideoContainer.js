@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useMeeting } from '@videosdk.live/react-sdk';
 import { Controls } from './Controls';
 import { VideoPlayer } from './VideoPlayer';
@@ -7,32 +7,37 @@ import { BounceLoader } from 'react-spinners';
 import { Palette } from '../palette/theme';
 
 export const VideoContainer=(props)=>{
-    const [joined, setJoined] = useEffect(false)
-    const {join} = useMeeting()
-    const { participants } = useMeeting();
+    const [joined, setJoined] = useState(false)
+    const { join, participants, toggleWebcam  } = useMeeting()
+
+    const joinUser =  async () => {
+        await join()
+    }
     
     useEffect(() => {
-        console.log("VideoContainer")
-        join()
+        joinUser()
         setJoined(true)
-    })
+    },[])
+
+    useEffect(()=>{
+        toggleWebcam()
+    }, [joined])
 
     return  joined ? (
-        <div style={{ "background-color": "black"}}>
+        <div>
             <div>
                 <Grid.Container justify="center" >
                 { 
                     [...participants.keys()].map((participantId) => {
-                        console.log(props.meetingId)
                         return ( 
-                            <Grid>
-                                <VideoPlayer participantId={participantId} key = {participantId} />
+                            <Grid key = {participantId}>
+                                <VideoPlayer participantId={participantId}  />
                             </Grid>
                         )
                     }
                 )}
                 </Grid.Container>
-                <Controls/>
+                {/* <Controls/> */}
             </div>
         </div>
     ) :  (

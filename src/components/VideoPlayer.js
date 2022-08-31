@@ -22,11 +22,9 @@ export function VideoPlayer (props) {
             mediaStream.addTrack(webcamStream.track);
             return mediaStream;
         }
-        console.log("videoStream")
     }, [webcamStream, webcamOn]);
     
     useEffect(() => {
-        console.log("mediaStream")
         if (micRef.current) {
             if (micOn) {
                 const mediaStream = new MediaStream();
@@ -45,7 +43,7 @@ export function VideoPlayer (props) {
     }, [micStream, micOn]);
     
     return (
-        <PlayerWrapper key={props.participantId}>
+        <PlayerWrapper key={ props.participantId }>
             {webcamOn && (
                 <ReactPlayer
                     playsinline 

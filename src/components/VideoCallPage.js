@@ -10,19 +10,16 @@ import { Palette } from '../palette/theme';
 
 
 export const VideoCallPage =()=>{
-    const [meetingId, setMeetingId] = useState(null);
+    const [meetingId, setMeetingId] = useState(null)
 
     const getMeetingAndToken = async () => {
-        console.log("getMeetingAndToken")
         const meetingId = await createMeeting({ token: authToken })
-        console.log("meetingId", meetingId)
         setMeetingId(meetingId)
     } 
 
     useEffect(()=>{
-        console.log("useEffect")
-        getMeetingAndToken()
-    },[meetingId])
+            getMeetingAndToken()
+    },[])
 
     return authToken && meetingId ? (
         <MeetingProvider
