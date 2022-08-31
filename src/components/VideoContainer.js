@@ -1,27 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useMeeting } from '@videosdk.live/react-sdk';
-import { Controls } from './Controls';
 import { VideoPlayer } from './VideoPlayer';
 import { Grid} from "@nextui-org/react";
 import { BounceLoader } from 'react-spinners';
 import { Palette } from '../palette/theme';
 
-export const VideoContainer=(props)=>{
+export const VideoContainer = () => {
     const [joined, setJoined] = useState(false)
     const { join, participants, toggleWebcam  } = useMeeting()
-
-    const joinUser =  async () => {
-        await join()
-    }
     
     useEffect(() => {
-        joinUser()
-        setJoined(true)
+        if (!joined) {
+            join()
+            toggleWebcam()
+            setJoined(true)
+        }
     },[])
-
-    useEffect(()=>{
-        toggleWebcam()
-    }, [joined])
 
     return  joined ? (
         <div>
@@ -37,7 +31,6 @@ export const VideoContainer=(props)=>{
                     }
                 )}
                 </Grid.Container>
-                {/* <Controls/> */}
             </div>
         </div>
     ) :  (

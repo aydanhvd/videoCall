@@ -2,6 +2,7 @@ import { useParticipant } from '@videosdk.live/react-sdk';
 import React, { useEffect, useMemo, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
+import Alert from '@mui/material/Alert';
 
 
 export function VideoPlayer (props) {
@@ -34,7 +35,7 @@ export function VideoPlayer (props) {
                 micRef.current
                 .play()
                 .catch((error) =>
-                    console.error("videoElem.current.play() failed", error)
+                    <Alert severity="error">{error}</Alert>
                 );
             } else {
                 micRef.current.srcObject = null;
@@ -61,10 +62,9 @@ export function VideoPlayer (props) {
                         bottom: 0,
                         backgroundColor: "black"
                     }}
-
                     url={videoStream}
                     onError={(err) => {
-                        console.log(err, "participant video error");
+                        <Alert severity="error">{err}</Alert>
                 }}/>
             )}
         </PlayerWrapper>
