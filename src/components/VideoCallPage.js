@@ -6,7 +6,7 @@ import { BounceLoader } from 'react-spinners';
 import { Palette } from '../palette/theme';
 
 
-export const VideoCallPage = () => {
+export const VideoCallPage = ({ meetingID, roomID, token }) => {
     const [meetingId, setMeetingId] = useState(null)
 
     const getMeetingAndToken = async () => {
@@ -37,7 +37,7 @@ export const VideoCallPage = () => {
         <BounceLoader
             loading = {true}
             color = { Palette.ibaBlue }
-            size = {"5vh"}
+            size = { "5vh" }
         />
     )
 }

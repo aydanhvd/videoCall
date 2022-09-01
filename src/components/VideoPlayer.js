@@ -1,8 +1,11 @@
-import { useParticipant } from '@videosdk.live/react-sdk';
+import { useMeeting, useParticipant } from '@videosdk.live/react-sdk';
 import React, { useEffect, useMemo, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 import Alert from '@mui/material/Alert';
+import { BounceLoader } from 'react-spinners';
+import { Palette } from '../palette/theme';
+
 
 
 export function VideoPlayer (props) {
@@ -12,10 +15,18 @@ export function VideoPlayer (props) {
         webcamStream, 
         micStream, 
         webcamOn, 
-        micOn 
+        micOn
     } = useParticipant(
         props.participantId
     )
+
+    const { toggleWebcam } = useMeeting()
+
+    useEffect (()=>{
+        if (!webcamOn){
+            toggleWebcam()
+        }
+    })
 
     const videoStream = useMemo(() => {
         if (webcamOn) {
@@ -45,9 +56,9 @@ export function VideoPlayer (props) {
     
     return (
         <PlayerWrapper key={ props.participantId }>
-            {webcamOn && (
+            {webcamOn ? (
                 <ReactPlayer
-                    playsinline 
+                    playsinline
                     pip={false}
                     light={false}
                     controls={false}
@@ -66,13 +77,18 @@ export function VideoPlayer (props) {
                     onError={(err) => {
                         <Alert severity="error">{err}</Alert>
                 }}/>
-            )}
+            ) :(
+                <BounceLoader
+                    loading = {true}
+                    color = { Palette.ibaBlue }
+                    size = {"5vh"}
+                />
+            )
+            }
         </PlayerWrapper>
     );
 }
 
 const PlayerWrapper = styled.div`
-    background-color: black ;
-    display: flex ;
     box-sizing: border-box;
 `

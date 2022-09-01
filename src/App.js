@@ -1,7 +1,8 @@
 import React from 'react'; 
-import { Route, Routes, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { VideoCallPage } from "./components/VideoCallPage";
+import { Route, Routes, useParams } from 'react-router-dom';
+
 
 export const App = () => {
 
@@ -10,7 +11,16 @@ export const App = () => {
   return (
     <Wrapper>
       <Routes>
-        <Route path="/" element = {<VideoCallPage/>} />
+        <Route 
+          path="/" 
+          element = {
+            <VideoCallPage
+              meetingID = { meetingID }
+              roomID = { roomID }
+              token = { token }
+            />
+          } 
+        />
       </Routes>
     </Wrapper>
   );
@@ -22,6 +32,5 @@ const Wrapper = styled.div`
   display: flex ;
   justify-content: center;
   align-items: center;
-  overflow: hidden ;
-  
+  overflow: hidden;
 `
