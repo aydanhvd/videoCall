@@ -20,7 +20,7 @@ export const VideoContainer = () => {
         }
     },[])
 
-    return  joined ? (
+    return  joined ?  (
         <div>
             <div>
                 <Grid.Container justify = "center" >

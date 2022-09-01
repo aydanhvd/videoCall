@@ -1,16 +1,18 @@
 import { useMeeting, useParticipant } from '@videosdk.live/react-sdk';
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 import Alert from '@mui/material/Alert';
 import { BounceLoader } from 'react-spinners';
 import { Palette } from '../palette/theme';
+import { LoadingButton } from '@mui/lab';
 
 
 
 export function VideoPlayer (props) {
     const micRef = useRef(null);
-
+    const webcamRef = useRef(null);
+    const [webCamStarted , setWebCamStarted] = useState(false)
     const {
         webcamStream, 
         micStream, 
@@ -19,22 +21,20 @@ export function VideoPlayer (props) {
     } = useParticipant(
         props.participantId
     )
-
     const { toggleWebcam } = useMeeting()
 
-    useEffect (()=>{
-        if (!webcamOn){
-            toggleWebcam()
-        }
-    }, [webcamOn, toggleWebcam])
-
     const videoStream = useMemo(() => {
-        if (webcamOn) {
+        if (webcamOn && webcamStream) {
             const mediaStream = new MediaStream();
             mediaStream.addTrack(webcamStream.track);
             return mediaStream;
         }
     }, [webcamStream, webcamOn]);
+
+    const onStart = ()=>{
+        setWebCamStarted(true)
+        toggleWebcam()
+    }
     
     useEffect(() => {
         if (micRef.current) {
@@ -64,7 +64,8 @@ export function VideoPlayer (props) {
                     muted = { false }
                     playing = { true }
                     url = { videoStream }
-                    re
+                    controls = { false }
+                    ref = { webcamRef }
                     width = "100%"
                     height = "100%"
                     style = {{ 
@@ -74,16 +75,16 @@ export function VideoPlayer (props) {
                         bottom: 0,
                         backgroundColor: "black"
                     }}
-                    onError={(error) => {
-                        <Alert severity="error">{error}</Alert>
-                    }}
+                    onError={(error) => {}}
                 />
             ) :(
-                <BounceLoader
-                    loading = { true }
-                    color = { Palette.ibaBlue }
-                    size = { "5vh" }
-                />
+                <LoadingButton
+                loading = { !webcamOn && webCamStarted }
+                variant="contained" 
+                onClick={()=> onStart()}
+                >
+                    Başla 
+                </LoadingButton>
             )
             }
         </PlayerWrapper>
