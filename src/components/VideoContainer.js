@@ -19,7 +19,7 @@ export const VideoContainer = () => {
     
     function onParticipantJoined(participant) {
         console.log(" onParticipantJoined", participant);
-    }
+}
     
     useEffect(() => {
         if (!joined) {

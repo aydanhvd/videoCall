@@ -1,9 +1,11 @@
 import React from 'react'; 
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { VideoCallPage } from "./components/VideoCallPage";
 
 export const App = () => {
+
+  const { meetingID, roomID, token } = useParams()
 
   return (
     <Wrapper>
