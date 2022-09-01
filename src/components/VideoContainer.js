@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useMeeting} from '@videosdk.live/react-sdk';
 import { VideoPlayer } from './VideoPlayer';
 import { Grid } from "@nextui-org/react";
-import { BounceLoader } from 'react-spinners';
+import { MoonLoader } from 'react-spinners';
 import { Palette } from '../palette/theme';
 
 export const VideoContainer = () => {
@@ -37,7 +37,7 @@ export const VideoContainer = () => {
             </div>
         </div>
     ) :  (
-        <BounceLoader
+        <MoonLoader
             loading = { true }
             color = { Palette.ibaBlue }
             size = { "5vh" }

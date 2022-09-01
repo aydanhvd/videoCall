@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { authToken, createMeeting } from '../networking/API';
 import { VideoContainer } from './VideoContainer';
 import { MeetingProvider, MeetingConsumer } from "@videosdk.live/react-sdk";
-import { BounceLoader } from 'react-spinners';
+import { MoonLoader } from 'react-spinners';
 import { Palette } from '../palette/theme';
 
 
@@ -34,7 +34,7 @@ export const VideoCallPage = ({ meetingID, roomID, token }) => {
             </MeetingConsumer>
         </MeetingProvider>
     ) : (
-        <BounceLoader
+        <MoonLoader
             loading = {true}
             color = { Palette.ibaBlue }
             size = { "5vh" }

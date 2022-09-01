@@ -77,7 +77,7 @@ export function VideoPlayer (props) {
                     }}
                     onError={(error) => {}}
                 />
-            ) :(
+            ) : (
                 <LoadingButton
                 loading = { !webcamOn && webCamStarted }
                 variant="contained" 
@@ -86,7 +86,7 @@ export function VideoPlayer (props) {
                     Başla 
                 </LoadingButton>
             )
-            }
+        }
         </PlayerWrapper>
     );
 }
