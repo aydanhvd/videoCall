@@ -15,7 +15,7 @@ export function VideoPlayer (props) {
         micOn 
     } = useParticipant(
         props.participantId
-    );
+    )
 
     const videoStream = useMemo(() => {
         if (webcamOn) {
@@ -73,4 +73,6 @@ export function VideoPlayer (props) {
 
 const PlayerWrapper = styled.div`
     background-color: black ;
+    display: flex ;
+    box-sizing: border-box;
 `

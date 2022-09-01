@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { authToken, createMeeting } from '../networking/API';
 import { VideoContainer } from './VideoContainer';
-import {
-    MeetingProvider,
-    MeetingConsumer
-} from "@videosdk.live/react-sdk";
+import { MeetingProvider, MeetingConsumer } from "@videosdk.live/react-sdk";
 import { BounceLoader } from 'react-spinners';
 import { Palette } from '../palette/theme';
 
 
-export const VideoCallPage =()=>{
+export const VideoCallPage = () => {
     const [meetingId, setMeetingId] = useState(null)
 
     const getMeetingAndToken = async () => {
@@ -18,8 +15,10 @@ export const VideoCallPage =()=>{
     } 
 
     useEffect(()=>{
+        if (meetingId == null){
             getMeetingAndToken()
-    },[])
+        }
+    },[meetingId])
 
     return authToken && meetingId ? (
         <MeetingProvider
