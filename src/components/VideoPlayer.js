@@ -26,7 +26,7 @@ export function VideoPlayer (props) {
         if (!webcamOn){
             toggleWebcam()
         }
-    })
+    }, [webcamOn, toggleWebcam])
 
     const videoStream = useMemo(() => {
         if (webcamOn) {
@@ -56,16 +56,17 @@ export function VideoPlayer (props) {
     
     return (
         <PlayerWrapper key={ props.participantId }>
-            {webcamOn ? (
+            { webcamOn ? (
                 <ReactPlayer
-                    playsinline
-                    pip={false}
-                    light={false}
-                    controls={false}
-                    muted={true}
-                    playing={true}
+                    playsinline // very very imp prop
+                    pip = { false }
+                    light = { false }
+                    muted = { false }
+                    playing = { true }
+                    url = { videoStream }
+                    re
                     width = "100%"
-                    height="100%"
+                    height = "100%"
                     style = {{ 
                         position: "absolute",
                         top: 0,
@@ -73,15 +74,15 @@ export function VideoPlayer (props) {
                         bottom: 0,
                         backgroundColor: "black"
                     }}
-                    url={videoStream}
-                    onError={(err) => {
-                        <Alert severity="error">{err}</Alert>
-                }}/>
+                    onError={(error) => {
+                        <Alert severity="error">{error}</Alert>
+                    }}
+                />
             ) :(
                 <BounceLoader
-                    loading = {true}
+                    loading = { true }
                     color = { Palette.ibaBlue }
-                    size = {"5vh"}
+                    size = { "5vh" }
                 />
             )
             }
