@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { authToken, createMeeting } from '../networking/API';
+// import { authToken, createMeeting } from '../networking/API';
 import { VideoContainer } from './VideoContainer';
 import { MeetingProvider, MeetingConsumer } from "@videosdk.live/react-sdk";
 import { MoonLoader } from 'react-spinners';
