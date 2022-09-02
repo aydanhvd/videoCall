@@ -3,8 +3,6 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 import Alert from '@mui/material/Alert';
-import { BounceLoader } from 'react-spinners';
-import { Palette } from '../palette/theme';
 import { LoadingButton } from '@mui/lab';
 
 

@@ -7,30 +7,30 @@ import { Palette } from '../palette/theme';
 
 
 export const VideoCallPage = ({ meetingID, roomID, token }) => {
-    const [meetingId, setMeetingId] = useState(null)
+    // const [meetingId, setMeetingId] = useState(null)
 
-    const getMeetingAndToken = async () => {
-        const meetingId = await createMeeting({ token: authToken })
-        setMeetingId(meetingId)
-    } 
+    // const getMeetingAndToken = async () => {
+    //     // const meetingId = await createMeeting({ token: authToken })
+    //     setMeetingId(meetingID)
+    // } 
 
-    useEffect(()=>{
-        if (meetingId == null){
-            getMeetingAndToken()
-        }
-    },[meetingId])
+    // useEffect(()=>{
+    //     if (meetingId == null){
+    //         getMeetingAndToken()
+    //     }
+    // },[meetingId])
 
-    return authToken && meetingId ? (
+    return token && meetingID ? (
         <MeetingProvider
             config={{
-                meetingId,
+                meetingID,
                 micEnabled: true,
                 webcamEnabled: false,
             }}
-            token={authToken}
+            token = { token }
         >
             <MeetingConsumer>
-                {() => <VideoContainer meetingId = {meetingId}/>}
+                {() => <VideoContainer meetingId = {meetingID}/>}
             </MeetingConsumer>
         </MeetingProvider>
     ) : (
