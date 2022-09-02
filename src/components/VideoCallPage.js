@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-// import { authToken, createMeeting } from '../networking/API';
 import { VideoContainer } from './VideoContainer';
 import { MeetingProvider, MeetingConsumer } from "@videosdk.live/react-sdk";
-import { MoonLoader } from 'react-spinners';
-import { Palette } from '../palette/theme';
+import { CircularProgress } from '@mui/material';
+// import { authToken, createMeeting } from '../networking/API';
 
 
 export const VideoCallPage = ({ meetingID, roomID, token }) => {
@@ -34,10 +33,6 @@ export const VideoCallPage = ({ meetingID, roomID, token }) => {
             </MeetingConsumer>
         </MeetingProvider>
     ) : (
-        <MoonLoader
-            loading = {true}
-            color = { Palette.ibaBlue }
-            size = { "5vh" }
-        />
+        <CircularProgress indeterminate />
     )
 }

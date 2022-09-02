@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useMeeting} from '@videosdk.live/react-sdk';
 import { VideoPlayer } from './VideoPlayer';
 import { Grid } from "@nextui-org/react";
-import { MoonLoader } from 'react-spinners';
-import { Palette } from '../palette/theme';
+import { CircularProgress } from '@mui/material';
 
 export const VideoContainer = () => {
     const [joined, setJoined] = useState(false)
@@ -37,10 +36,6 @@ export const VideoContainer = () => {
             </div>
         </div>
     ) :  (
-        <MoonLoader
-            loading = { true }
-            color = { Palette.ibaBlue }
-            size = { "5vh" }
-        />
+        <CircularProgress indeterminate />
     )
 }
