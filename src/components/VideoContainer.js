@@ -3,6 +3,7 @@ import { useMeeting} from '@videosdk.live/react-sdk';
 import { VideoPlayer } from './VideoPlayer';
 import { Grid } from "@nextui-org/react";
 import { CircularProgress } from '@mui/material';
+import { Timer } from './Timer';
 
 export const VideoContainer = () => {
     const [joined, setJoined] = useState(false)
@@ -33,6 +34,7 @@ export const VideoContainer = () => {
                     }
                 )}
                 </Grid.Container>
+                {/* <Timer/> */}
             </div>
         </div>
     ) :  (
