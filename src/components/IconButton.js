@@ -2,7 +2,7 @@ import React from 'react'
 import { CameraAltOutlined , MicNoneOutlined} from '@mui/icons-material';
 import styled from 'styled-components';
 import LocalizedStrings from 'react-localization';
-import { localizedText } from '../locate/localizedText';
+import { localizedText } from '../locale/localizedText';
 
 
 
@@ -32,6 +32,7 @@ const Wrapper = styled.div `
     flex-direction: column;
     justify-content: center;
     align-content: center ;
+    align-items: center ;
     padding: 2vh ;
 
 `
@@ -41,7 +42,7 @@ const Text = styled.h3`
 `
 const IconStyles = {
     color: 'white',
-    backgroundColor: '#2058BB',
+    backgroundColor: '#3B8DD4',
     padding: '15px',
     borderRadius: '200px',
     margin:'10px'
