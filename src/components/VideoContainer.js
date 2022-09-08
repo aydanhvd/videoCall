@@ -7,7 +7,6 @@ import { Timer } from './Timer';
 
 export const VideoContainer = () => {
     const [joined, setJoined] = useState(false)
-
     const { 
         join, 
         participants
@@ -34,7 +33,7 @@ export const VideoContainer = () => {
                     }
                 )}
                 </Grid.Container>
-                {/* <Timer/> */}
+                <Timer/>
             </div>
         </div>
     ) :  (

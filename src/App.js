@@ -27,10 +27,10 @@ export const App = () => {
 }
 
 const Wrapper = styled.div`
-  box-sizing: border-box;
   height: 100vh; 
   display: flex ;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  box-sizing: border-box;
 `

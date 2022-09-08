@@ -2,27 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { VideoContainer } from './VideoContainer';
 import { MeetingProvider, MeetingConsumer } from "@videosdk.live/react-sdk";
 import { CircularProgress } from '@mui/material';
-// import { authToken, createMeeting } from '../networking/API';
+import { token, createMeeting } from '../networking/API';
+
 
 
 export const VideoCallPage = ({ meetingID, roomID, token }) => {
-    // const [meetingId, setMeetingId] = useState(null)
+    // const [meetingID, setMeetingId] = useState(null)
 
     // const getMeetingAndToken = async () => {
-    //     // const meetingId = await createMeeting({ token: authToken })
+    //     const meetingID = await createMeeting({ token: token })
     //     setMeetingId(meetingID)
     // } 
 
     // useEffect(()=>{
-    //     if (meetingId == null){
+    //     if (meetingID == null){
     //         getMeetingAndToken()
     //     }
-    // },[meetingId])
+    // },[meetingID])
 
     return token && meetingID ? (
         <MeetingProvider
             config={{
-                meetingID,
+                meetingId: meetingID,
                 micEnabled: true,
                 webcamEnabled: false,
             }}
