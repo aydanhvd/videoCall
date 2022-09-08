@@ -6,19 +6,19 @@ import { token, createMeeting } from '../networking/API';
 
 
 
-export const VideoCallPage = ({ meetingID, roomID, token }) => {
-    // const [meetingID, setMeetingId] = useState(null)
+export const VideoCallPage = () => { //{ meetingID, roomID, token }
+    const [meetingID, setMeetingId] = useState(null)
 
-    // const getMeetingAndToken = async () => {
-    //     const meetingID = await createMeeting({ token: token })
-    //     setMeetingId(meetingID)
-    // } 
+    const getMeetingAndToken = async () => {
+        const meetingID = await createMeeting({ token: token })
+        setMeetingId(meetingID)
+    } 
 
-    // useEffect(()=>{
-    //     if (meetingID == null){
-    //         getMeetingAndToken()
-    //     }
-    // },[meetingID])
+    useEffect(()=>{
+        if (meetingID == null){
+            getMeetingAndToken()
+        }
+    },[meetingID])
 
     return token && meetingID ? (
         <MeetingProvider

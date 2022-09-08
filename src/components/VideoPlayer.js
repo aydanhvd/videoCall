@@ -1,16 +1,16 @@
 import { useMeeting, useParticipant } from '@videosdk.live/react-sdk';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 import Alert from '@mui/material/Alert';
-import { LoadingButton } from '@mui/lab';
+import { CircularProgress } from '@mui/material';
 
 
 
 export function VideoPlayer (props) {
     const micRef = useRef(null);
     const webcamRef = useRef(null);
-    const [webCamStarted , setWebCamStarted] = useState(false)
+
     const {
         webcamStream, 
         micStream, 
@@ -19,7 +19,6 @@ export function VideoPlayer (props) {
     } = useParticipant(
         props.participantId
     )
-    const { toggleWebcam } = useMeeting()
 
     const videoStream = useMemo(() => {
         if (webcamOn && webcamStream) {
@@ -28,11 +27,6 @@ export function VideoPlayer (props) {
             return mediaStream;
         }
     }, [webcamStream, webcamOn]);
-
-    const onStart = ()=>{
-        setWebCamStarted(true)
-        toggleWebcam()
-    }
     
     useEffect(() => {
         if (micRef.current) {
@@ -76,13 +70,7 @@ export function VideoPlayer (props) {
                     onError={(error) => {}}
                 />
             ) : (
-                <LoadingButton
-                loading = { !webcamOn && webCamStarted }
-                variant="contained" 
-                onClick={()=> onStart()}
-                >
-                    Başla 
-                </LoadingButton>
+                <CircularProgress indeterminate />
             )
         }
         </PlayerWrapper>

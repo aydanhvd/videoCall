@@ -1,15 +1,31 @@
+import { useParticipant } from '@videosdk.live/react-sdk';
 import React,{ useState, useEffect } from 'react'
 import styled from 'styled-components';
 
-export const Timer=()=>{
-    const [counter, setCounter] =useState(0);
+export const Timer=( { participants } )=>{
+    const [counter, setCounter] = useState(0);
+    const participantsArr = [...participants.values()] 
 
-        // Third Attempts
+    const localParticipant = participantsArr.filter((participant)=> !participant.localParticipant)[0]
+    const otherParticipant = participantsArr.filter((participant)=> !participant.otherParticipant)[0]
+
+    const canStartCounter =()=>{
+        return (
+            counter < 60
+            && participantsArr.length === 2
+            && localParticipant.webcamOn 
+            &&  localParticipant.micOn 
+            && otherParticipant.webcamOn
+            && otherParticipant.micOn
+        )
+    }
+
     useEffect(() => {
     const timer =
-            counter < 60 && setInterval(() => setCounter(counter + 1), 1000);
+        canStartCounter()  
+        && setInterval(() => setCounter(counter + 1), 1000);
         return () => clearInterval(timer);
-    }, [counter]);
+    });
 
     const getFormattedSeconds =()=>{
         var formattedSeconds = counter
@@ -41,4 +57,5 @@ const CountDownTimer = styled.div `
     background-color: rgba(0, 0, 0, 0.2) ;
     position: absolute ;
     bottom: 5vh;
+    left: 5vh ;
 `

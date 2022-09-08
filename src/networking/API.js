@@ -1,6 +1,6 @@
 export const apiKey = "4ce2deeb-202e-4dd5-ba48-aa92499d037f"
 export const secretKey = "ffac73c229d069543b064c55270b0b2f446a5a646efcf8452bb4ad6ea2474e93"
-export const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiI0Y2UyZGVlYi0yMDJlLTRkZDUtYmE0OC1hYTkyNDk5ZDAzN2YiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTY2MTk0NjQzOCwiZXhwIjoxNjYyNTUxMjM4fQ.VWGnuDq_yY7AWjc6EvCys31Wbi8wzslJs84XftNFNWo";
+export const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiI0Y2UyZGVlYi0yMDJlLTRkZDUtYmE0OC1hYTkyNDk5ZDAzN2YiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTY2MjYyNzcxMiwiZXhwIjoxNjYzMjMyNTEyfQ.9AyT-MbxfAjfnF8qN-YteeLvXXusYsQZms1JCGtroCw";
 
 
 const local_url = "http://localhost:3000" // temp
